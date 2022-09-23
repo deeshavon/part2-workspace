@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class ShoppingCart<T extends Product> {
+public class ShoppingCart<T extends Product> {  //this line is declaring a new type parameter, per Nick
 
   // storage for the cart's contents
   private Collection<T> items = new ArrayList<T>();  // diamond not used here just to emphasize the T
@@ -34,11 +34,11 @@ public class ShoppingCart<T extends Product> {
   }
 
   public double total () {
-    double result = 0.0;
+    double sum = 0;
     for (T item : items) {
-      result += item.getPrice();
+      sum += item.getPrice();
     }
-    return result;
+    return sum;
   }
 
 
