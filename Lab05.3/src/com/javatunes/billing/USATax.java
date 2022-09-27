@@ -9,12 +9,20 @@
 package com.javatunes.billing;
 
 /**
- * Domestic orders have a graduated tax scheme:
- *  The first $20.00 is tax-free.
- *  Amount over $20.00 is taxed at 10.0%.
- *  
+ * Domestic orders have a graduated tax scheme: The first $20.00 is tax-free. Amount over $20.00 is
+ * taxed at 10.0%.
+ * <p>
  * TODO: implement this algorithm.
  */
-public class USATax {
+public class USATax implements TaxCalculator {
 
+  @Override
+  public double taxAmount(double taxable) {
+    // TODO: 9/27/22 Compute and return 10% of the amount exceeding $20.
+    double tax = 0;
+    if (taxable > 20) {
+      tax = 0.10 * (taxable - 20);
+    }
+    return tax;
+  }
 }
