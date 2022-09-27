@@ -9,6 +9,7 @@
 package com.javatunes.personnel;
 
 import java.sql.Date;
+import java.util.Map;
 import java.util.Objects;
 
 public class HourlyEmployee
@@ -28,7 +29,10 @@ extends Employee {
     setRate(rate);
     setHours(hours);
   }
-  
+
+  public static Object createEmployee(Map< String, String> inputMap) {
+  }
+
   @Override
   public void pay() {
     System.out.println(getName() + " is paid hourly " + (getRate() * getHours()));
