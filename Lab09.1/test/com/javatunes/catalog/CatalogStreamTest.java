@@ -51,7 +51,13 @@ public class CatalogStreamTest {
    */
   @Test
   public void testTitleEqualsArtistSortNaturalOrder() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getTitle().equals(item.getArtist()))
+        .sorted()
+        .collect(Collectors.toList());
+
+    System.out.println(items);
+
   }
   
   /**
@@ -63,7 +69,15 @@ public class CatalogStreamTest {
    */
   @Test
   public void testPriceLessThanSortMusicCategory() {
-    // TODO
+    List<MusicItem> items = allMusicItems
+        .stream()
+        .filter(item -> item.getPrice() < 12.00)
+        .sorted(Comparator.comparing(MusicItem::getMusicCategory))
+        .collect(Collectors.toList());
+
+    System.out.println(items);
+
+
   }
   
   /**
@@ -73,7 +87,12 @@ public class CatalogStreamTest {
    */
   @Test
   public void testSortMusicCategorySortReleaseDateDesc() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getPrice()<15 && item.getMusicCategory().equals(MusicCategory.ROCK))
+        .sorted(Comparator.comparing(MusicItem::getReleaseDate))
+        .collect(Collectors.toList());
+
+    System.out.println(items);
   }
   
   /**
@@ -84,7 +103,14 @@ public class CatalogStreamTest {
    */
   @Test
   public void testPriceGreaterThanSortPriceDescThenMusicCategory() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getPrice() > 17)
+        .sorted(Comparator.comparing(MusicItem::getPrice).reversed())
+        .sorted(Comparator.comparing(MusicItem::getArtist))
+        .collect(Collectors.toList());
+
+    System.out.println(items);
+
   }
   
   /**
@@ -95,6 +121,11 @@ public class CatalogStreamTest {
    */
   @Test
   public void testReleaseDateSortArtist() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getPrice() <12 && item.getReleaseDate().toString().startsWith("198"))
+        .sorted(Comparator.comparing(MusicItem::getReleaseDate).reversed())
+        .collect(Collectors.toList());
+
+    System.out.println(items);
   }
 }
